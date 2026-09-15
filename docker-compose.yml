@@ -1,0 +1,29 @@
+services:
+  valkey:
+    image: valkey/valkey:8.0-alpine
+    container_name: valkey_topdoctors
+    ports:
+      - "6379:6379"
+    restart: always
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: topdoctors-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - REDIS_HOST=valkey_topdoctors
+      - REDIS_PORT=6379
+      - NODE_ENV=production
+    depends_on:
+      valkey:
+        condition: service_healthy
+    restart: always
