@@ -1,7 +1,7 @@
 {
   "name": "topdoctors-prueba-tecnica",
   "version": "1.0.0",
-  "description": "",
+  "description": "Prueba técnica para el proceso de selección de TopDoctors",
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
@@ -10,7 +10,7 @@
     "test:jobs": "tsx src/scripts/sendTestJobs.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Javier Moreno Castillo",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
